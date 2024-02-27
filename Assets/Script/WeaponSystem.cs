@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class WeaponSystem : MonoBehaviour
 {
-    [SerializeField] private GameObject Player;
+   
     [SerializeField] private Transform WeaponPoint;
     [SerializeField] private Weapon SelectedWeapon;
     [SerializeField] private GameObject SelectedWeapon_Prefab;
     [SerializeField] private PlayerStats _PlayerStats;
     [SerializeField] private float bulletSpeed;
     [SerializeField] private float bulletSpawnTime;
-    bool isShoot = false;
+    [SerializeField] private List<Weapon> Weapons = new List<Weapon>();
+    [SerializeField] private GameObject SelectedBullet;
+
     float time = 0;
 
     // Start is called before the first frame update
@@ -25,11 +27,10 @@ public class WeaponSystem : MonoBehaviour
     {
         time += Time.deltaTime;
         bulletSpeed = _PlayerStats.Player_fireRate;
-        Debug.Log((float)1 / (_PlayerStats.Player_fireRate / 50));
         bulletSpawnTime = (float)1 / (_PlayerStats.Player_fireRate/50);
         if (time >= bulletSpawnTime)
         {
-           GameObject Bullet = Instantiate(SelectedWeapon.Bullet_prefab, SelectedWeapon_Prefab.transform.GetChild(0).transform);
+           GameObject Bullet = Instantiate(SelectedBullet, WeaponPoint.transform.GetChild(0).transform);
             Bullet.GetComponent<Rigidbody>().AddForce(new Vector3(-bulletSpeed, 0,0));
             StartCoroutine(DestroyGameObject(Bullet,2)); 
             time = 0;
@@ -39,11 +40,19 @@ public class WeaponSystem : MonoBehaviour
 
     }
 
-
     void changeWeapon()
     {
-        SelectedWeapon_Prefab=Instantiate(SelectedWeapon.Prefab,WeaponPoint);
-      //  SelectedWeapon.Prefab
+        foreach (var item in Weapons)
+        {
+            if (_PlayerStats.Player_Year >= item.weaponYear)
+            {
+               // SelectedWeapon_Prefab = item.Prefab;
+                WeaponPoint.GetComponent<MeshFilter>().mesh = item.weaponMesh;
+                WeaponPoint.transform.position= item.spawnPoint;
+                SelectedBullet = item.Bullet_prefab;
+            }
+           
+        }
     }
    
     IEnumerator DestroyGameObject(GameObject gameobject,float destroyTime) 
