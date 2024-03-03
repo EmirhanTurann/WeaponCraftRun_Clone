@@ -17,3 +17,6 @@ MonoBehaviour:
   fireRate: 0
   fireRange: 0
   weaponYear: 2000
+  weaponMesh: {fileID: -5861051738845161739, guid: 36c8c612ead910648aaa74e38aa3a578, type: 3}
+  weaponPosition: {x: 0.44, y: -0.6, z: -0.11}
+  weaponScale: {x: 0.5, y: 0.5, z: 0.5}

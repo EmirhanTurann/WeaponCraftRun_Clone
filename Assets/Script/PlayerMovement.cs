@@ -6,13 +6,16 @@ public class PlayerMovement : MonoBehaviour
 {
 
    private Rigidbody rb;
-   [SerializeField] private float forward_Speed = 0;
-   [SerializeField] private float Direction_Speed = 0;
-
+   [SerializeField] private float Defaultforward_Speed = 0;
+    [SerializeField] private float forward_Speed = 0;
+    [SerializeField] private float Direction_Speed = 0;
+   //[SerializeField] private GameObject PlayerCanvas;
+   //[SerializeField] private GameObject Player;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        forward_Speed = Defaultforward_Speed;
     }
 
    
@@ -26,5 +29,33 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
 
+        if (other.CompareTag("Money"))
+        {
+            other.gameObject.SetActive(false);
+        }
+        if (other.CompareTag("increaseSpeed"))
+        {
+
+            forward_Speed += forward_Speed/2;
+        }
+        if (other.CompareTag("decreaseSpeed"))
+        {
+            forward_Speed -=  forward_Speed / 2;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("increaseSpeed"))
+        {
+            forward_Speed = Defaultforward_Speed;
+        }
+        if (other.CompareTag("decreaseSpeed"))
+        {
+
+            forward_Speed = Defaultforward_Speed;
+        }
+    }
 }

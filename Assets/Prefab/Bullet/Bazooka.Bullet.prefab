@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 8814066466164357856}
   - component: {fileID: 7078953929441937284}
   - component: {fileID: 2598575477679311191}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bazooka.Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

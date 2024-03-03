@@ -11,7 +11,8 @@ public class Weapon : ScriptableObject
     public int fireRange;
     public int weaponYear;
     public Mesh weaponMesh;
-    public Vector3 spawnPoint;
+    public Vector3 weaponPosition;
+    public Vector3 weaponScale;
 
 
 }

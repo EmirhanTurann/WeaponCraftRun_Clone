@@ -3,17 +3,27 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Bullet
+  - RevolverMag
+  - Band
+  - PushMechanism
+  - BulletGateBullet
+  - Money
+  - BackCollider
+  - increaseSpeed
+  - decreaseSpeed
+  - wall
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Bullet
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Player
+  - Band
+  - Money
   - 
   - 
   - 
