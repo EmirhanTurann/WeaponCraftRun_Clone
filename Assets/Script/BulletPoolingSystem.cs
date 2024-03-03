@@ -51,8 +51,7 @@ public class BulletPoolingSystem : MonoBehaviour
                 {
                     Bullets[i].transform.position = BulletSpawnPoint.transform.position;
                     Bullets[i].SetActive(true);
-
-
+                  
 
                     break;
                 }

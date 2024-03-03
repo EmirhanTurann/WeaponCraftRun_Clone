@@ -33,6 +33,7 @@ public class LastParkourSystem : MonoBehaviour
         {
             other.transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("isDead");
             other.gameObject.GetComponent<PlayerMovement>().enabled = false;
+            other.gameObject.GetComponent<BulletPoolingSystem>().enabled = false;
         }
     }
 }
